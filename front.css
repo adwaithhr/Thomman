@@ -9,9 +9,16 @@
   width: 643px;
   height: 184px;
 }
+.login-anim{
+  position: absolute;
+  top: 45px;
+  left: 1364px;
+  width: 150px;
+  height: 150px;
+}
 .rect {
   top: 174px;
-  border: 2px solid red;
+
   height: 561px;
   width: 472px;
   left: 1211px;
@@ -74,21 +81,31 @@
   /* justify-content: center; */
   width: 141px;
   height: 84px;
-  border: 2px solid green;
+
 }
 .rectangle-input,
 .slide-169-1-child3 {
   border: 0;
   background-color: var(--color-gold-100);
-  position:absolute ;
-  top: 461px;
-  left: 1270px;
+  position:relative ;
+  top: 100px;
+  left: 0px;
+  /* justify-content: center; */
+  /* align-items: center; */
   border-radius: var(--br-xl);
   width: 365px;
   height: 59px;
+  font-size: 20px;
+  font-family: var(--font-inter);
+  padding-left: 12px;
+  color: white;
+
 }
+/* .rectangle-input,.slide-169-1-child3:active{
+  /* border-color: white; */
+/* } */ 
 .slide-169-1-child3 {
-  top: 563px;
+  top: 140px;
 }
 .username {
   top: 476px;
@@ -99,7 +116,7 @@
 .forgot-password,
 .password,
 .username {
-  position: absolute;
+  position: relative;
   font-weight: 500;
 }
 .password {
@@ -109,37 +126,45 @@
   color: var(--color-gray-200);
 }
 .forgot-password {
-  top: 651px;
-  left: 1251px;
+  top: 110px;
+  left: -15px;
+  position: relative;
   font-size: var(--font-size-xl);
   display: flex;
   align-items: center;
   justify-content: center;
   width: 236px;
   height: 19px;
+  color: white;
+  text-decoration: none;
+}
+.forgot-password:hover{
+  color:rgb(252, 196, 28);
 }
 .rectangle-button {
   cursor: pointer;
   border: 0;
   padding: 0;
   background-color: var(--color-gold-200);
-  position: absolute;
-  top: 727px;
-  left: 1372px;
+  position: relative;
+  top: 150px;
+  left: 0px;
   border-radius: var(--br-xl);
   width: 165px;
   height: 59px;
+  font-size: var(--font-size-9xl);
+  color: white;
+  font-family: var(--font-inter);
+  transition: 0.15s;
 }
-.login1 {
-  position: absolute;
-  top: 713px;
-  left: 1269px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 359px;
-  height: 84px;
+.rectangle-button:hover{
+  font-size: 30px;
+
 }
+.rectangle-button:active{
+  opacity: 0.15;
+}
+
 .slide-169-1 {
   position: relative;
   background-color: var(--color-gray-100);
