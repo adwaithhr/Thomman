@@ -29,21 +29,16 @@
         alt=""
         src="./public/reg.gif">
       </img>
-      <input class="slide-169-2-child" type="text" placeholder="First Name"/> 
-      <input class="rectangle-div" type="text" placeholder="Last Name"/>  
-      <input
-        class="slide-169-2-inner"
-        type="text" placeholder="E-mail"
-      />
-      <input class="slide-169-2-item" type="text" placeholder="Username"/>
-      <input class="rectangle-input" type="password" placeholder="Password"/><input
-        class="slide-169-2-child1"
-        type="password"
-        placeholder="Confirm Password"
-      />
-      
-      
+      <form method="POST" action="register">
+        {% csrf_token %}
+        <input class="slide-169-2-child" type="text" name="first_name" placeholder="First Name"/> 
+        <input class="rectangle-div" type="text" name="last_name" placeholder="Last Name"/>  
+        <input class="slide-169-2-inner" type="email" name="email" placeholder="E-mail"/>
+        <input class="slide-169-2-item" type="text" name="username" placeholder="Username"/>
+        <input class="rectangle-input"  name="password1" type="password" placeholder="Password"/>
+        <input class="slide-169-2-child1" type="password" name="password2" placeholder="Confirm Password"/>
       <button class="rectangle-button">Submit</button>
+      </form>
       <b class="enter-details">Enter Details</b>
     </div>
   </body>
