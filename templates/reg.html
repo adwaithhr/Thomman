@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <link rel="stylesheet" href="{% static 'css/global.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/reg.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+    />
+  </head>
+  <body>
+    <div class="slide-169-2">
+      <img class="e21-icon" alt="" src="{% static 'img/e2.1.svg' %}" /><img
+        class="e22-icon"
+        alt=""
+        src="{% static 'img/e2.2.svg' %}"
+      /><img class="e23-icon" alt="" src="{% static 'img/e2.3.svg' %}" /><img
+        class="e24-icon"
+        alt=""
+        src="{% static 'img/e2.4.svg' %}"
+      /><img class="e24-icon" alt="" src="{% static 'img/e2.5.svg' %}" /><img
+        class="e24-icon"
+        alt=""
+        src="{% static 'img/e2.6.svg' %}"
+      /><img class="e24-icon" alt="" src="{% static 'img/e2.7.svg' %}" />
+      <img class="hi-anim"
+        alt=""
+        src="{% static 'img/reg.gif' %}">
+      </img>
+      <form method="POST" action="register">
+        {% csrf_token %}
+      <input class="slide-169-2-child" name="first_name" type="text" placeholder="First Name"/> 
+      <input class="rectangle-div" name="last_name" type="text" placeholder="Last Name"/>  
+      <input
+        class="slide-169-2-inner"
+        type="email" name="email" placeholder="E-mail"
+      />
+      <input class="slide-169-2-item" name="username" type="text" placeholder="Username"/>
+      <input class="rectangle-input" name="password1" type="password" placeholder="Password"/><input
+        class="slide-169-2-child1"
+        type="password"
+        name="password2"
+        placeholder="Confirm Password"
+      />
+      <button type="submit" class="rectangle-button">Submit</button>
+      </form>
+      <b class="enter-details">Enter Details</b>
+    </div>
+    <div>
+      {% for message in messages %}
+      <h3>{{message}}</h3>
+      {% endfor %}
+    </div>
+  </body>
+</html>
