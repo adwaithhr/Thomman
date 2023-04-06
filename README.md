@@ -8,7 +8,7 @@ How to use this project
 To use this project, follow the steps below:
 Clone the project repository to your local machine.
 Install the required dependencies by running pip install -r requirements.txt command.
-Run the main.py file to start the program.
+Run the maanage.py file to start the program.(python manage.py runserver)
 The AI chatbot will greet you and ask how you are feeling.
 Type in your response and the AI chatbot will provide personalized advice and support based on your emotions.
 The AI chatbot will also store your complete sessions in a backend database for future reference.
