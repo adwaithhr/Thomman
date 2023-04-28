@@ -4,17 +4,25 @@ from django.contrib import messages
 
 
 def login(request):
+<<<<<<< HEAD
     print("in login")
     if request.method == "POST":
         print("in login post"+request.method)
         username = request.POST['username']
         password = request.POST['password']
         user = auth.authenticate(username=username, password=password)
+=======
+    if request.method=="POST":
+        # print("in login post"+request.method)
+        username=request.POST['username']
+        password=request.POST['password']
+        user=auth.authenticate(username=username,password=password)
+>>>>>>> 553f77c9e096348d3782775877af59735d49ef1f
         if user is not None:
             auth.login(request, user)
             return redirect("/"+username+"/profile/")
-            # return redirect('profile')
         else:
+<<<<<<< HEAD
             messages.info(request, "Invalid credentials", extra_tags="pop")
             print("incorrect")
             return redirect('/')
@@ -22,6 +30,13 @@ def login(request):
         print("in login render"+request.method)
         return render(request, 'front.html')
 
+=======
+            messages.info(request,"invalid credentials")
+            # print("incorrect")
+            return redirect('/')
+    else:
+        return render(request,'front.html')
+>>>>>>> 553f77c9e096348d3782775877af59735d49ef1f
 
 def register(request):
     if request.method == "POST":
