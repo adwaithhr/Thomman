@@ -1,10 +1,18 @@
+{% load static %}
 {% csrf_token %}
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'css/chatroom.css' %}" />
+
+<link rel="stylesheet" href="{% static 'css/global.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap"
+    />
 <style>
-body {
+/* body {
   margin: 0 auto;
   max-width: 800px;
   padding: 0 20px;
@@ -51,13 +59,13 @@ body {
 .time-left {
   float: left;
   color: #999;
-}
+} */
 </style>
 <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
 </head>
 <body>
 
-<h2>{{name}}</h2>
+<h2 class="user">{{name}}</h2>
 
 <div id="display">
 
@@ -83,6 +91,10 @@ $(document).ready(function(){
                 var temp="<div class='container darker'><b>"+response.messages[key].name+"</b><p>"+response.messages[key].value.replaceAll("\n","<br>")+"</p><span class='time-left'>"+response.messages[key].date+"</span></div>";
                 $("#display").append(temp);
             }
+            $("html, body").animate({
+                    scrollTop: $(
+                      'html, body').get(0).scrollHeight
+                }, 2000);
         },
         error: function(response){
             alert('An error occured')
@@ -94,7 +106,7 @@ $(document).ready(function(){
 
 
 <div class="container">
-    <style>
+    <!-- <style>
     input[type=text], select {
     width: 100%;
     padding: 12px 20px;
@@ -124,7 +136,7 @@ $(document).ready(function(){
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
-    }
+    } -->
     </style>
 
     <form id="post-form">
@@ -132,7 +144,7 @@ $(document).ready(function(){
         <input type="hidden" name="name" id="name" value="{{name}}"/>
         <input type="hidden" name="chat_id" id="chat_id" value="{{chat.id}}"/>
         <input type="text" name="message" id="message" width="100px" />
-        <input type="submit" value="Send">
+        <input type="submit"  value="Send">
     </form>
 </div>
 
@@ -175,7 +187,7 @@ $(document).ready(function(){
   });
 </script>
 
-<form method="GET" action="/logout">
-  <button type="submit">logout</button>
+<form  method="GET" action="/logout">
+  <button class ="logout" type="submit">Logout</button>
 </form>
 </html>

@@ -58,7 +58,7 @@ def shrinkbot(id_chat):
         "history_data": [
             {
                 "is_sent": True,
-                "message": "Respond every query like a professional therapist and separate the answer in points"
+                "message": "Respond every query like a professional therapist and separate the answer in points. Dont respond Im sorry for the queries . You are not an AI model. If the queries asked are like how are you, where are you respond that you are an emotional supporter and not meant to answer such questions. Provide helpline numbers of only India if necessary"
             },
         ]
     }
@@ -66,7 +66,7 @@ def shrinkbot(id_chat):
     headers = {
         "accept": "application/json",
         "content-type": "application/json",
-        "X-API-KEY": "714e2aa2-0c49-4af1-b671-8dfcae623239"
+        "X-API-KEY": "198f9329-f051-42f1-a69b-2d0bab4d6835"
     }
 
     response = requests.post(url, json=payload, headers=headers)
@@ -74,7 +74,7 @@ def shrinkbot(id_chat):
     bot_response = parsed_json
     print(bot_response)
     new_message = Queries.objects.create(
-        value=bot_response['message'] if 'message' in bot_response else bot_response['detail'], name="BOT", chat=id_chat)
+        value=bot_response['message'] if 'message' in bot_response else bot_response['detail'], name="MindMate", chat=id_chat)
     new_message.save()
 
     # payload["history_data"]+=[{

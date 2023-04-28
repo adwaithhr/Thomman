@@ -1,0 +1,110 @@
+body {
+    /* margin: 0 auto;
+    max-width: 800px;
+    padding: 0 20px; */
+    background-color: rgba(188, 171, 250, 0.9); 
+    font-family: var(--font-inter);
+    overflow-x: hidden;
+  }
+  
+  .user{
+    top: 30px;
+    position: relative;
+    left: 410px;
+    /* margin: 10px auto; */
+  }
+  .container {
+    border: 2px solid #dedede;
+    background-color: #cccccc;
+    border-radius: 5px;
+    padding: 10px;
+    /* margin-top: 60px; */
+    margin: 10px auto;
+    font-family: var(--font-inter);
+    width: 1000px;
+    /* background-color: rgb(0, 255, 255,0.5); */
+  }
+  
+  .darker {
+    border-color: #ccc;
+    background-color:#ccc ;
+  }
+  
+  .container::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .container img {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+  }
+  
+  .container img.right {
+    float: right;
+    margin-left: 20px;
+    margin-right:0;
+  }
+  
+  .time-right {
+    float: right;
+    color: #aaa;
+  }
+  
+  .time-left {
+    float: left;
+    color: #999;
+  }
+
+  input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: var(--font-inter);
+    }
+
+    input[type=submit] {
+    width: 100%;
+    background-color: var(--color-gold-100);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    }
+
+    input[type=submit]:hover {
+    background-color: #78a045;
+    }
+
+    div {
+    top: 60px;
+    border-radius: 5px;
+    /* display: inline-block; */
+    background-color: rgba(188, 171, 250, 0.9);
+    padding: 20px;
+    }
+    .logout{
+      position: absolute;
+      right: 420px;
+      border: 6px;
+      border-color: white;
+      background-color: #ccc;
+      top: 30px;
+      width: 200px;
+      margin-bottom: 10px;
+      font-size: var(--font-size-xl);
+      border-radius: 10px;
+      height: 40px;
+      cursor: pointer;
+    }

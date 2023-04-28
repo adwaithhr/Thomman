@@ -46,9 +46,9 @@
         <a class="forgot-password" href="{% url 'register' %}">New User?</a> 
         <button class="rectangle-button">Login</button>
       </form>
-      <div>
+      <div class="pop">
         {% for message in messages %}
-        <h3>{{message}}</h3>
+        <h3 style="font-size: 14px; position: relative; bottom: 5px; left: -127px; color: red;">{{message}}</h3>
         {% endfor %}
       </div>
       

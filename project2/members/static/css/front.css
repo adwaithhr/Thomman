@@ -9,6 +9,11 @@
   width: 643px;
   height: 184px;
 }
+.pop{
+  font-size: 15px;
+  margin-bottom: 10px;
+  top: 100px;
+}
 .login-anim{
   position: absolute;
   top: 45px;

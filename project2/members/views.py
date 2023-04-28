@@ -1,54 +1,58 @@
-from django.shortcuts import render,redirect
-from django.contrib.auth.models import auth,User
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import auth, User
 from django.contrib import messages
+
 
 def login(request):
     print("in login")
-    if request.method=="POST":
+    if request.method == "POST":
         print("in login post"+request.method)
-        username=request.POST['username']
-        password=request.POST['password']
-        user=auth.authenticate(username=username,password=password)
+        username = request.POST['username']
+        password = request.POST['password']
+        user = auth.authenticate(username=username, password=password)
         if user is not None:
-            auth.login(request,user)
+            auth.login(request, user)
             return redirect("/"+username+"/profile/")
             # return redirect('profile')
         else:
-            messages.info(request,"invalid credentials")
+            messages.info(request, "Invalid credentials", extra_tags="pop")
             print("incorrect")
             return redirect('/')
     else:
         print("in login render"+request.method)
-        return render(request,'front.html')
+        return render(request, 'front.html')
+
 
 def register(request):
-    if request.method=="POST":
-        first_name=request.POST['first_name']
-        last_name=request.POST['last_name']
-        username=request.POST['username']
-        password1=request.POST['password1']
-        password2=request.POST['password2']
-        email=request.POST['email']
-        if password1==password2:
+    if request.method == "POST":
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        username = request.POST['username']
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+        email = request.POST['email']
+        if password1 == password2:
             if User.objects.filter(username=username).exists():
-                messages.info(request,'Username Taken')
+                messages.info(request, 'Username Taken')
                 print("useranme")
-                return render(request,'reg.html')
+                return render(request, 'reg.html')
             elif User.objects.filter(email=email).exists():
-                messages.info(request,'Email Taken')
+                messages.info(request, 'Email Taken')
                 print("email")
-                return render(request,'reg.html')
+                return render(request, 'reg.html')
             else:
-                user=User.objects.create_user(username=username,password=password1,first_name=first_name,last_name=last_name,email=email)
+                user = User.objects.create_user(
+                    username=username, password=password1, first_name=first_name, last_name=last_name, email=email)
                 user.save()
                 print("correct")
                 return redirect('/')
         else:
-            messages.info(request,'password not matching')
+            messages.info(request, 'password not matching')
             print("password")
-            return render(request,'reg.html')
+            return render(request, 'reg.html')
     else:
-        return render(request,'reg.html')
+        return render(request, 'reg.html')
+
 
 def logout_view(request):
     auth.logout(request)

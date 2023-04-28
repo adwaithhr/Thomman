@@ -157,4 +157,7 @@
     color: var(--color-gray-300);
     font-family: var(--font-inter);
   }
+  .pop{
+    background-color: var(--color-gray-100);
+  }
   
