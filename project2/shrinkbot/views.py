@@ -5,8 +5,11 @@ from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
 from django.contrib.auth.models import User
 import requests
-import json
+import openai
+import time
 from django.contrib.auth.decorators import login_required
+
+openai.api_key = "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"
 
 
 @login_required
@@ -38,47 +41,26 @@ def getQueries(request, username):
 
 
 def shrinkbot(id_chat):
-    url = "https://api.writesonic.com/v2/business/content/chatsonic?engine=premium"
-    print()
     qry = Queries.objects.all().last()
-    payload = {
-        "enable_google_results": "true",
-        "enable_memory": True,
-        "input_text": qry.value,
-        "history_data": [
-            {
-                "is_sent": True,
-                "message": "Respond every query like a professional therapist and separate the answer in points. Dont respond Im sorry for the queries . You are not an AI model. If the queries asked are like how are you, where are you respond that you are an emotional supporter and not meant to answer such questions. Provide helpline numbers of only India if necessary"
-            },
-        ]
-    }
-    # print(payload["history_data"])
-    headers = {
-        "accept": "application/json",
-        "content-type": "application/json",
-        "X-API-KEY": "198f9329-f051-42f1-a69b-2d0bab4d6835"
-    }
+    prompt = qry.value
+    prompt = "Respond like a professional therapist to the user for the the issue\"" + \
+        prompt+"\" Give answer in differnt lines"
 
-    response = requests.post(url, json=payload, headers=headers)
-    parsed_json = json.loads(response.text)
-    bot_response = parsed_json
-    # print(bot_response)
+    # Generate a response to the user's prompt
+    response = generate_response(prompt)
+
+    # Display the response to the user
+    print(response)
     new_message = Queries.objects.create(
-        value=bot_response['message'] if 'message' in bot_response else bot_response['detail'], name="MindMate", chat=id_chat)
+        value=response, name="MindMate", chat=id_chat)
     new_message.save()
 
-    # payload["history_data"]+=[{
-    #             "is_sent": True,
-    #             "message": payload["input_text"]
-    #         }]
-
-    # print(payload["history_data"])
 
 def send(request):
     message = request.POST['message']
     username = request.POST['name']
-    name = User.objects.filter(username=username).first().first_name+" "+\
-           User.objects.filter(username=username).first().last_name
+    name = User.objects.filter(username=username).first().first_name+" " +\
+        User.objects.filter(username=username).first().last_name
     chat_id = request.POST['chat_id']
     # print(f"........{chat_id}")
     # print(name)
@@ -92,3 +74,20 @@ def send(request):
 def logout_view(request):
     auth.logout(request)
     return redirect("login")
+
+
+def generate_response(prompt):
+    # Set up OpenAI API request parameters
+    completions = openai.Completion.create(
+        engine="text-davinci-003",
+        prompt=prompt,
+        max_tokens=1024,
+        n=1,
+        stop=None,
+        temperature=0.7,
+    )
+
+    # Extract the response text from the API response
+    message = completions.choices[0].text.strip()
+
+    return message
