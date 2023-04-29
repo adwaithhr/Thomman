@@ -9,7 +9,7 @@ import openai
 import time
 from django.contrib.auth.decorators import login_required
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 
 @login_required

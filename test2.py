@@ -2,7 +2,7 @@ import openai
 import time
 
 # Set up OpenAI API credentials
-openai.api_key = "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"
+openai.api_key = "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"
 
 # Define a function to generate a response to a prompt
 

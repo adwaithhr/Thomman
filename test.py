@@ -18,7 +18,8 @@ data = {
     'max_length': 1024,
 }
 
-response = requests.post(API_ENDPOINT + 'auto-gpt-3', headers=headers, data=json.dumps(data))
+response = requests.post(API_ENDPOINT + 'auto-gpt-3',
+                         headers=headers, data=json.dumps(data))
 
 output = response
 print(output)
